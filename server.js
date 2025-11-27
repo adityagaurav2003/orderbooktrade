@@ -44,10 +44,23 @@ app.get("/balance/:userId", (req, res) => {
   res.json({ balances: user ? user.balances : { "USD": 0, [TICKER]: 0 } });
 });
 
-// Placeholder for quote (not implemented)
+// Placeholder for quote
 app.get("/quote", (req, res) => {
-  res.json({ message: "Quote feature not implemented yet." });
+  const { side, quantity } = req.body;
+
+  if (side === "bid") {
+    if (!asks.length) return res.json({ quote: 0 });
+    return res.json({ quote: asks[0].price * quantity });
+  }
+
+  if (side === "ask") {
+    if (!bids.length) return res.json({ quote: 0 });
+    return res.json({ quote: bids[0].price * quantity });
+  }
+
+  return res.status(400).json({ quote: 0 });
 });
+
 
 // Fill orders and adjust balances
 function fillOrders(side, price, quantity, userId) {
