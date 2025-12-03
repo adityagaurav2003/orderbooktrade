@@ -1,0 +1,106 @@
+http://localhost:3000/order
+
+{
+  "side": "bid",
+  "price": 100,
+  "quantity": 5,
+  "userId": "1"
+}
+
+
+
+http://localhost:3000/order
+
+{
+  "side": "ask",
+  "price": 100,
+  "quantity": 5,
+  "userId": "2"
+}
+
+
+
+http://localhost:3000/depth
+
+
+
+test 1----
+
+http://localhost:3000/balance/1
+
+{
+  "balances": {
+    "GOOGLE": 10,
+    "USD": 50000
+  }
+}
+
+
+http://localhost:3000/order
+{
+  "side": "bid",
+  "price": 1400.1,
+  "quantity": 2,
+  "userId": "1"
+}
+
+
+
+post-http://localhost:3000/order
+
+{
+  "side": "ask",
+  "price": 1400.9,
+  "quantity": 5,
+  "userId": "2"
+}
+
+
+get-http://localhost:3000/depth
+
+
+
+post=http://localhost:3000/order
+
+{
+  "side": "bid",
+  "price": 1500,
+  "quantity": 2,
+  "userId": "1"
+}
+
+
+
+test 2------>
+
+POST-http://localhost:3000/order
+{
+  "type": "limit",
+  "side": "bid",
+  "price": 1400.1,
+  "quantity": 1,
+  "userId": "1"
+}
+
+
+http://localhost:3000/order
+{
+  "type": "limit",
+  "side": "ask",
+  "price": 1400.9,
+  "quantity": 10,
+  "userId": "2"
+}
+
+
+http://localhost:3000/order
+{
+  "type": "limit",
+  "side": "ask",
+  "price": 1501,
+  "quantity": 5,
+  "userId": "2"
+}
+
+
+
